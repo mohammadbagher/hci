@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="fa">
+<head>
+    <meta charset="utf-8">
+    <title>HiLingo</title>
+    <link href="static/css/custom-theme/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+    <link href="static/css/base.css" rel="stylesheet">
+
+
+    <script src="static/js/jquery-1.9.1.js"></script>
+    <script src="static/js/jquery-ui-1.10.3.custom.js"></script>
+    <script src="static/js/jquery.ui.notification.min.js"></script>
+    <script src="static/js/base.js"></script>
+    <style>
+
+        .demoHeaders {
+            margin-top: 2em;
+        }
+
+        #dialog-link {
+            padding: .4em 1em .4em 20px;
+            text-decoration: none;
+            position: relative;
+        }
+
+        #dialog-link span.ui-icon {
+            margin: 0 5px 0 0;
+            position: absolute;
+            left: .2em;
+            top: 50%;
+            margin-top: -8px;
+        }
+
+        #icons {
+            margin: 0;
+            padding: 0;
+        }
+
+        #icons li {
+            margin: 2px;
+            position: relative;
+            padding: 4px 0;
+            cursor: pointer;
+            float: left;
+            list-style: none;
+        }
+
+        #icons span.ui-icon {
+            float: left;
+            margin: 0 4px;
+        }
+
+        .fakewindowcontain .ui-widget-overlay {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="header">
+    <!--<img class="top-img" src="static/images/tut6.PNG">-->
+</div>
+<div id="content">
+    <div id="right-content" class="float-right">
+        <form id="login" class="">
+            <table>
+
+                <tr>
+                    <td>
+                        <label>کاربر</label>
+                    </td>
+                    <td>
+                        <label>محمدحسین انصاری</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label> سطح آموزش</label>
+                    </td>
+                    <td>
+                        <label> ۳</label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="text-align: center" colspan="2">
+                        <button class="button">
+                            تعییر مشخصات کاربری
+                        </button>
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+
+
+    </div>
+    <div id="main-content" class="float-right">
+        <form>
+            <div id="nav-bar">
+                <a href="index.html" id="radio1">صفحه اصلی</a>
+                <a href="learn.html" id="radio2">آموزش</a>
+                <a href="#" id="radio3">تنظیمات آموزش</a>
+            </div>
+        </form>
+        <div id="learn">
+            <label>
+                سعی کنید جمله زیر را ترجمه کنید:
+            </label>
+
+            <div id="translate" style="position: relative">
+                <img src="static/images/next.png" onclick="go_next()"
+                     style="width: 60px;height: 60px; top: 0; position: absolute; z-index: 5">
+
+                <div style="width: 60px">
+                    <div id="st-1" style="width: 100%; direction: ltr; text-align: center; position: absolute; top: 0">
+                        <span class="word" ><input class="word" type="checkbox" id="check1" title="این حمله را مهم کنید" /><label for="check1">مهم</label></span>
+                        <span class="word" title="من"> I</span>
+                        <span class="word" title="برو، رفتن"> go</span>
+                        <span class="word" title="به- تا"> to</span>
+                        <span class="word" title="مدرسه"> school</span>
+                        <span class="word" title="به وسیله‌ی، با، کنار"> by</span>
+                        <span class="word" title="اتوبوس"> bus.</span>
+                    </div>
+                    <div id="st-2"
+                         style="width: 100%; display: none; direction: ltr; text-align: center; position: absolute; top: 0">
+                        <span class="word" ><input class="word" type="checkbox" id="check2" title="این جمله را مهم کنید" /><label for="check2">مهم</label></span>
+                        <span class="word" title="من"> I</span>
+                        <span class="word" title="هستم"> am</span>
+                        <span class="word" title="شاد، شادی"> happy</span>
+                        <span class="word" title="امروز"> today.</span>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 60px ">
+                    <label for="translated">
+                        ترجمه:
+                    </label>
+                    <input id="translated"
+                           title="در صورتی که قادر به ترجمه جمله نیستید موس رو روی هر کلمه که معنی آن رو نمی‌دانید نگه دارید."
+                           type="text"
+                           class=" ui-corner-all ui-widget-content text">
+                </div>
+                <img src="static/images/prev.png" onclick="go_prev()"
+                     style="width: 60px;height: 60px; top: 0; left: 0; position: absolute;z-index: 5">
+
+                <div style="text-align: center">
+                    <button class="button">
+                        بررسی درستی
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--<div id="left-content" class="float-right">-->
+    <!--قسمت چپ-->
+    <!--</div>-->
+</div>
+<div id="forget-pass">
+    <table>
+        <tr>
+            <td>
+                <label for="forgot-user">
+                    نام کاربری خود را وارد کنید
+                </label>
+            </td>
+            <td>
+                <input id="forgot-user" type="text" class=" ui-corner-all ui-widget-content text">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="reset-done" class="button" onclick="confirm_user()">
+                    ارسال
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>
+<div id="sign-up-form">
+    <table>
+        <tr>
+            <td>
+                <label for="sign-up-email">
+                    رایانامه
+                </label>
+            </td>
+            <td>
+                <input id="sign-up-email" title="لینک فعال‌سازی به رایانامه شما فرستاده می‌شود" type="email"
+                       class=" ui-corner-all ui-widget-content text">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="sign-up-password">
+                    رمز عبور
+                </label>
+            </td>
+            <td>
+                <input id="sign-up-password" title="رمز عبورباید حداقل ۶ کاراکتر باشد" type="password"
+                       class=" ui-corner-all ui-widget-content text">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="sign-up-password-rep">
+                    تکرار رمز عبور
+                </label>
+            </td>
+            <td>
+                <input id="sign-up-password-rep" type="password" class=" ui-corner-all ui-widget-content text">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input id="sign-up-terms" type="checkbox" class=" ui-corner-all ui-widget-content">
+                <label for="sign-up-terms">
+                    تمامی قوانین سایت را قبول دارم
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="send" class="button">
+                    ثبت نام
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>
+<div id="setting" style="display: none">
+    <table>
+        <tr>
+            <td>
+                <label for="level">
+                    سطح آموزش
+                </label>
+            </td>
+            <td>
+                <select id="level" class=" ui-corner-all ui-widget-content text">
+                    <option>
+                        سطح ۱
+                    </option>
+                    <option>
+                        سطح ۲
+                    </option>
+                    <option>
+                        سطح ۳
+                    </option>
+                    <option>
+                        سطح ۴
+                    </option>
+                    <option>
+                        سطح ۵
+                    </option>
+                    <option>
+                        سطح ۶
+                    </option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <label for="sign-up-email">
+                    می‌خواهید در آموزش شمااز کدام یک استفاده شود؟
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="slideTwo">
+                    <input id="one" style="display: none" type="checkbox" value="None" checked="true"  name="check"/>
+                    <label for="one"></label>
+                </div>
+            </td>
+            <td>
+                مقالات علمی معتبر
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="slideTwo">
+                    <input id="two" style="display: none" type="checkbox" value="None" checked="true"  name="check"/>
+                    <label for="two"></label>
+                </div>
+            </td>
+            <td>
+                صفحات وب تعیین شده
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div  class="slideTwo">
+                    <input id="three" style="display: none" type="checkbox" value="None"  name="check"/>
+                    <label for="three"></label>
+                </div>
+            </td>
+            <td>
+                کتاب‌های رمان
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div  class="slideTwo">
+                    <input id="four" style="display: none" type="checkbox" value="None"  name="check"/>
+                    <label for="four"></label>
+                </div>
+            </td>
+            <td>
+                کتاب‌های علمی
+            </td>
+        </tr>
+        <tr >
+            <td>
+                <button id="set-close" class="button">
+                    ذخیره
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="sign-up-email">
+
+                </label>
+            </td>
+            <td>
+                <input id="sign-up-em" title="لینک فعال‌سازی به رایانامه شما فرستاده می‌شود" type="email"
+                       class=" ui-corner-all ui-widget-content text">
+            </td>
+        </tr>
+    </table>
+
+</div>
+<div id="footer">
+    تمامی حقوق این سایت متعلق به مالکین پروژه Hilingo می باشد
+</div>
+<div class="ui-notification-bottomleft"></div>
+<div class="ui-notification-container"></div>
+</body>
+<script>
+    //    document.body.style.width = (window.screen.width - 50) + 'px';
+    document.body.style.height = (window.screen.height - 150) + 'px';
+</script>
+</html>
